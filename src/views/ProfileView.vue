@@ -1,12 +1,12 @@
 <template>
-  <router-view />
+  <div class="profile">个人中心</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import "./app.css";
+import "@/assets/css/ProfileView.css";
 
 export default defineComponent({
-  name: "App",
+  name: "ProfileView",
 });
 </script>

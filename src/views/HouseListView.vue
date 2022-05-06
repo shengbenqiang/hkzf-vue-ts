@@ -1,12 +1,12 @@
 <template>
-  <router-view />
+  <div class="house-list">城市</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import "./app.css";
+import "@/assets/css/HomeListView.css";
 
 export default defineComponent({
-  name: "App",
+  name: "HouseList",
 });
 </script>
