@@ -29,8 +29,29 @@
 .home-item-rent-group > div {
     padding: 1rem 1rem;
     display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 .home-item-rent-group-left {
     display: flex;
     flex-direction: column;
+}
+.home-item-rent-group-left > span {
+    display: block;
+}
+.home-item-rent-group-left > span:nth-child(1) {
+    font-size: 1.4rem;
+    color: #000;
+    font-weight: bold;
+    margin-bottom: .5rem;
+}
+.home-item-rent-group-right {
+    width: 5rem;
+    height: 100%;
+    text-align: center;
+    line-height: 5rem;
+}
+.home-item-rent-group-right img {
+    width: 5rem;
+    height: 5rem;
 }

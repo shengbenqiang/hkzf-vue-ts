@@ -5,6 +5,11 @@
 .parent-page-room {
     width: 100%;
     height: calc(100% - 5rem);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.parent-page-room::-webkit-scrollbar {
+    display: none;
 }
 .parent-tab-bar-room {
     box-sizing: border-box;

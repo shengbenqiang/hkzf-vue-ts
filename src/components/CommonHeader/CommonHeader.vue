@@ -2,7 +2,7 @@
   <div class="common-header">
     <div class="common-header-room">
       <div class="common-header-left-room">
-        <div class="common-header-locate">
+        <div class="common-header-locate" @click="pageChange('/cityList')">
           <span>北京</span>
           <div><SIcon icon="icon-arrow" :size="1.5" /></div>
         </div>
@@ -22,12 +22,24 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import "./CommonHeader.css";
+import { useRouter } from "vue-router";
 import SIcon from "@/components/SIcon/SIcon.vue";
 
 export default defineComponent({
   name: "CommonHeader",
   components: {
     SIcon,
+  },
+  setup() {
+    const router = useRouter();
+
+    function pageChange(path: string) {
+      router.push(path);
+    }
+
+    return {
+      pageChange,
+    };
   },
 });
 </script>

@@ -1,27 +1,27 @@
 import service from "@/api/service";
 
 export default {
-  getSwiper() {
-    return service.get("/home/swiper").then((res) => {
-      return res.data;
-    });
-  },
-  getGroups() {
+  getCityDate(level: number) {
     return service
-      .get("/home/groups", {
+      .get("/area/city", {
         params: {
-          area: "AREA%7C88cff55c-aaa4-e2e0",
+          level,
         },
       })
       .then((res) => {
         return res.data;
       });
   },
-  getNews() {
+  getHotCity() {
+    return service.get("/area/hot").then((res) => {
+      return res.data;
+    });
+  },
+  getLocateInfo(cityName: string) {
     return service
-      .get("/home/news", {
+      .get("/area/info", {
         params: {
-          area: "AREA%7C88cff55c-aaa4-e2e0",
+          name: cityName,
         },
       })
       .then((res) => {

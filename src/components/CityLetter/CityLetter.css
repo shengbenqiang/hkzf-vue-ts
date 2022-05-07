@@ -1,0 +1,29 @@
+.city-letter {
+    width: 100%;
+    border-bottom: 1px solid #cccccc;
+}
+.city-letter:last-child {
+    border-bottom: none;
+}
+.city-letter-index {
+    width: 100%;
+    height: 3rem;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    line-height: 3rem;
+    text-align: left;
+    color: #666;
+    user-select: none;
+}
+.city-letter-item-city {
+    width: 100%;
+    height: 4rem;
+    text-align: left;
+    line-height: 4rem;
+    box-sizing: border-box;
+    padding-left: 1rem;
+    font-size: 1.4rem;
+    color: #000;
+    user-select: none;
+}

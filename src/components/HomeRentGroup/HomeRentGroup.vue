@@ -15,7 +15,12 @@
             <span>{{ itemGroup.title }}</span>
             <span>{{ itemGroup.desc }}</span>
           </div>
-          <div class="home-item-rent-group-right"></div>
+          <div class="home-item-rent-group-right">
+            <img
+              :alt="itemGroup.desc"
+              :src="`http://localhost:8080${itemGroup.imgSrc}`"
+            />
+          </div>
         </van-grid-item>
       </van-grid>
     </div>

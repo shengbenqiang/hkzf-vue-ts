@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import NewsView from "@/views/NewsView.vue";
-import HomeView from "../views/HomeView.vue";
+import CityList from "@/views/CityList.vue";
+import HomeView from "@/views/HomeView.vue";
 import ParentView from "@/views/ParentView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import HouseListView from "@/views/HouseListView.vue";
@@ -13,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: "/",
-        name: "Home",
+        redirect: "/home",
         component: HomeView,
       },
       {
@@ -37,6 +38,11 @@ const routes: Array<RouteRecordRaw> = [
         component: ProfileView,
       },
     ],
+  },
+  {
+    path: "/cityList",
+    name: "CityList",
+    component: CityList,
   },
 ];
 

@@ -16,3 +16,11 @@ export interface GroupType {
   imgSrc: string;
   title: string;
 }
+
+export interface NewType {
+  date: string;
+  from: string;
+  id: number;
+  imgSrc: string;
+  title: string;
+}
