@@ -3,13 +3,12 @@
     <div class="common-nav-header">
       <CommonNavHeader title="城市选择" />
     </div>
-    <div class="city-list-room">
+    <div class="city-list-room" ref="cityList">
       <CityLetter
         v-for="itemIndex in locateIndex"
         :key="itemIndex"
         :index="itemIndex"
         :cities="locates[itemIndex]"
-        ref="cityList"
       />
       <CityIndex :index-arr="locateIndex" @setSelectIndex="setSelectIndex" />
     </div>
@@ -34,8 +33,8 @@ export default defineComponent({
     CommonNavHeader,
   },
   setup() {
-    const cityList = ref();
     const locates = ref<ListItem>({});
+    const cityList = ref();
     const locateIndex = ref<string[]>([]);
 
     async function getCities() {
@@ -62,12 +61,13 @@ export default defineComponent({
       let scrollHeight = 0;
       for (let i = 0; i < locateIndex.value.length; i++) {
         if (locateIndex.value[i] === index) {
-          scrollHeight += 3 + locates.value[locateIndex.value[i]].length * 4;
+          scrollHeight += 1.4;
           break;
         }
         scrollHeight += 3 + locates.value[locateIndex.value[i]].length * 4;
       }
       console.log(scrollHeight);
+      cityList.value.scrollTo({ top: scrollHeight * 10, behavior: "smooth" });
     }
 
     getCities();

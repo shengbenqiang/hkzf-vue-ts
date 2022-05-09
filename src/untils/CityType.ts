@@ -13,3 +13,7 @@ export interface CityAbout {
 export interface ListItem {
   [key: string]: LocateType[];
 }
+export interface CityInfo {
+  label: string;
+  value: string;
+}

@@ -9,6 +9,9 @@ import {
   Grid,
   GridItem,
   NavBar,
+  Field,
+  Icon,
+  Toast,
 } from "vant";
 import "@/untils/VantStyle";
 
@@ -23,4 +26,7 @@ app
   .use(Tabbar)
   .use(TabbarItem)
   .use(NavBar)
+  .use(Field)
+  .use(Icon)
+  .use(Toast)
   .mount("#app");

@@ -28,4 +28,27 @@ export default {
         return res.data;
       });
   },
+  getAreaList(name: string, id: string) {
+    return service
+      .get("/area/community", {
+        params: {
+          id,
+          name,
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+  },
+  getCityHouse(id: string) {
+    return service
+      .get("/area/map", {
+        params: {
+          id,
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+  },
 };
