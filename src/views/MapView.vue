@@ -9,20 +9,38 @@
       />
     </div>
     <div class="map-room" id="mapContainer"></div>
+    <div class="map-house-list-room" v-if="houseList.length > 0">
+      <div class="map-house-list-header-room">
+        <span>房屋列表</span>
+        <span>更多房源</span>
+      </div>
+      <div class="map-house-list-house-room">
+        <House
+          v-for="itemHouse in houseList"
+          :key="itemHouse.houseCode"
+          :house-info="itemHouse"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import "@/assets/css/MapView.css";
 import { useRouter } from "vue-router";
 import { CityInfo } from "@/untils/CityType";
 import { Toast } from "vant";
 import api from "@/api/index";
 import { LabelType } from "@/untils/MapType";
+import { RoomType } from "@/untils/HomeType";
+import House from "@/components/House/House.vue";
 
 export default defineComponent({
   name: "MapView",
+  components: {
+    House,
+  },
   setup() {
     const labelStyle = {
       cursor: "pointer",
@@ -35,6 +53,7 @@ export default defineComponent({
     };
 
     const router = useRouter();
+    const houseList = ref<RoomType[]>([]);
 
     function handleNavLeftClick() {
       router.go(-1);
@@ -60,6 +79,9 @@ export default defineComponent({
         },
         locate.label
       );
+      map.addEventListener("movestart", () => {
+        houseList.value = [];
+      });
     }
 
     // eslint-disable-next-line
@@ -177,13 +199,23 @@ export default defineComponent({
     }
 
     function getHouseList(id: string) {
-      console.log(id);
+      Toast.loading({
+        message: "加载中...",
+        forbidClick: true,
+      });
+      api.HouseApi.getNeighbourhood(id).then((res) => {
+        if (res.status === 200) {
+          Toast.clear();
+          houseList.value = res.body.list;
+        }
+      });
     }
 
     onMounted(() => {
       initMap();
     });
     return {
+      houseList,
       handleNavLeftClick,
     };
   },

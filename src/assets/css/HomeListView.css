@@ -1,0 +1,5 @@
+.house-list-room {
+    width: 100%;
+    height: calc(100% - 8.6rem);
+    box-sizing: border-box;
+}

@@ -25,10 +25,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, watch, onMounted } from "vue";
 import "@/assets/css/ParentView.css";
 import { tabs } from "@/untils/staticDate";
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
 import SIcon from "@/components/SIcon/SIcon.vue";
 
 export default defineComponent({
@@ -37,12 +37,32 @@ export default defineComponent({
     SIcon,
   },
   setup() {
+    const route = useRoute();
     const router = useRouter();
-    const active = ref<string>("/home");
+    const tabRoutes = ref<string[]>([
+      "/home",
+      "/houseList",
+      "/news",
+      "/profile",
+    ]);
+    const active = ref<string>("");
 
     const handleTabChange = (active: string) => {
       router.push(active);
     };
+
+    watch(
+      () => route.fullPath,
+      async (val) => {
+        if (tabRoutes.value.includes(val)) {
+          active.value = val;
+        }
+      }
+    );
+
+    onMounted(() => {
+      active.value = route.fullPath;
+    });
 
     return {
       tabs,

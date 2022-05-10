@@ -12,6 +12,7 @@ import {
   Field,
   Icon,
   Toast,
+  Area,
 } from "vant";
 import "@/untils/VantStyle";
 
@@ -28,5 +29,6 @@ app
   .use(NavBar)
   .use(Field)
   .use(Icon)
+  .use(Area)
   .use(Toast)
   .mount("#app");

@@ -19,6 +19,14 @@ module.exports = defineConfig({
           "^/area/": "/area/",
         },
       },
+      "/houses": {
+        target: "http://localhost:8080",
+        ws: true,
+        changeOrigin: true,
+        pathRewrite: {
+          "^/houses": "/houses",
+        },
+      },
     },
   },
 });

@@ -1,5 +1,6 @@
 import { tabBarType } from "./ParentType";
 import { HomeNavigate } from "./HomeType";
+import { TitleListType } from "./ListType";
 
 export const tabs: tabBarType[] = [
   {
@@ -44,5 +45,24 @@ export const navigate: HomeNavigate[] = [
     img: require("@/assets/images/nav-4.png"),
     name: "去出租",
     path: "/rent",
+  },
+];
+
+export const titleList: TitleListType[] = [
+  {
+    title: "区域",
+    type: "area",
+  },
+  {
+    title: "方式",
+    type: "rentType",
+  },
+  {
+    title: "租金",
+    type: "price",
+  },
+  {
+    title: "筛选",
+    type: "more",
   },
 ];

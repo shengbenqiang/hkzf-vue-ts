@@ -6,3 +6,4 @@ import "vant/es/grid/style";
 import "vant/es/grid-item/style";
 import "vant/es/field/style";
 import "vant/es/toast/style";
+import "vant/es/area/style";

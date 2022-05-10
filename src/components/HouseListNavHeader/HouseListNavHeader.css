@@ -1,0 +1,17 @@
+.house-list-nav-header {
+    width: 100%;
+    height: 4.6rem;
+}
+.house-list-nav-header .van-nav-bar {
+    background-color: #f5f5f5;
+}
+.house-list-header-nav-bar .van-icon-arrow-left {
+    color: #000;
+}
+.house-list-header-nav-bar .van-nav-bar__title {
+    max-width: 100%;
+    margin: 0 0 0 5rem;
+}
+.house-list-common-header-room {
+    width: 38rem;
+}

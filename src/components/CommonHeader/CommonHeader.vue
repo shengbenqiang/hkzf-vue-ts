@@ -1,5 +1,10 @@
 <template>
-  <div class="common-header">
+  <div
+    :class="[
+      'common-header',
+      absolute ? 'common-header-absolute' : 'common-header-un-absolute',
+    ]"
+  >
     <div class="common-header-room">
       <div class="common-header-left-room">
         <div class="common-header-locate" @click="pageChange('/cityList')">
@@ -12,8 +17,16 @@
           <span>请输入小区或地址</span>
         </div>
       </div>
-      <div class="common-header-right-room" @click="pageChange('/map')">
-        <SIcon icon="icon-map" :size="3" />
+      <div
+        :class="[
+          'common-header-right-room',
+          absolute
+            ? 'common-header-absolute-color'
+            : 'common-header-un-absolute-color',
+        ]"
+        @click="pageChange('/map')"
+      >
+        <SIcon icon="icon-map" :size="absolute ? 3 : 2.5" />
       </div>
     </div>
   </div>
@@ -30,6 +43,12 @@ export default defineComponent({
   name: "CommonHeader",
   components: {
     SIcon,
+  },
+  props: {
+    absolute: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup() {
     const router = useRouter();

@@ -1,11 +1,17 @@
 .common-header {
     width: 100%;
-    height: 4rem;
-    position: absolute;
-    top: 3rem;
     z-index: 2;
     box-sizing: border-box;
+}
+.common-header-absolute {
+    position: absolute;
+    top: 3rem;
     padding: 0 2rem;
+    height: 4rem;
+}
+.common-header-un-absolute {
+    padding: 0 2rem 0 0;
+    height: 3.5rem;
 }
 .common-header-room {
     width: 100%;
@@ -30,13 +36,19 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    font-size: 1.25rem;
 }
 .common-header-right-room {
     width: 5rem;
     height: 100%;
     text-align: center;
     line-height: 4rem;
+}
+.common-header-absolute-color {
     color: #ffffff;
+}
+.common-header-un-absolute-color {
+    color: rgb(0, 174, 102);
 }
 .common-header-input {
     width: calc(100% - 8rem);

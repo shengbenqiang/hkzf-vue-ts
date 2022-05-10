@@ -24,3 +24,12 @@ export interface NewType {
   imgSrc: string;
   title: string;
 }
+export interface RoomType {
+  desc: string;
+  houseCode: string;
+  houseImg: string;
+  price: number;
+  tags: string[];
+  title: string;
+  style?: object;
+}

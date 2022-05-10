@@ -1,3 +1,6 @@
+.map {
+    position: relative;
+}
 .map-nav-header {
     width: 100%;
     height: 4.6rem;
@@ -61,4 +64,34 @@
     height: 0;
     margin: 0 auto;
     border: .4rem solid transparent;
+}
+.map-house-list-room {
+    width: 100%;
+    height: 40rem;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+}
+.map-house-list-header-room {
+    width: 100%;
+    height: 4rem;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    color: #000;
+    font-weight: bold;
+}
+.map-house-list-house-room {
+    width: 100%;
+    height: calc(100% - 4rem);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.map-house-list-house-room::-webkit-scrollbar {
+    display: none;
 }

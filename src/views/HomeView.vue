@@ -1,7 +1,7 @@
 <template>
   <div class="home common-container">
     <div class="home-swipe-con">
-      <CommonHeader />
+      <CommonHeader absolute />
       <SwiperComponent :get-swiper="swiperImg" />
     </div>
     <div class="home-nav-room">
