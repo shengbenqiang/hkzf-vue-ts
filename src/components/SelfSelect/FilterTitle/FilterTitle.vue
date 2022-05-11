@@ -1,7 +1,12 @@
 <template>
   <div class="filter-title">
     <div
-      class="filter-title-item-room"
+      :class="[
+        'filter-title-item-room',
+        titleSelectedStatus[itemTitle.type]
+          ? 'filter-title-select-item-room'
+          : '',
+      ]"
       v-for="itemTitle in titleList"
       :key="itemTitle.type"
       @click="handleFilterTitleClick(itemTitle.type)"
@@ -28,12 +33,15 @@ export default defineComponent({
       {} as FilterSolveType
     );
 
+    const { titleSelectedStatus } = filterSolve;
+
     function handleFilterTitleClick(type: string) {
       filterSolve.handleOpenType(type);
     }
 
     return {
       titleList,
+      titleSelectedStatus,
       handleFilterTitleClick,
     };
   },

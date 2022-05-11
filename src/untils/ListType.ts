@@ -1,3 +1,5 @@
+import { StrObj, BaseBoolean } from "./BaseType";
+
 export interface TitleListType {
   title: string;
   type: string;
@@ -6,20 +8,54 @@ export interface TitleListType {
 export interface FilterSolveType {
   openType: string;
   condition: ConditionType;
+  conditionText: string;
+  showCondition: boolean;
+  conditionData: CascadePickerType | BasePicker[];
+  titleSelectedStatus: TitleStats;
+  closePicker: () => void;
   handleOpenType: (type: string) => void;
+  handleSelectPicker: (val: OnSelectType) => void;
 }
 
 export interface ConditionType {
-  [key: string]: CascadePickerType | basePicker[];
+  [key: string]: CascadePickerType | BasePicker[];
 }
 
 export interface CascadePickerType {
-  label: string;
+  label?: string;
   value: string;
+  text?: string;
   children?: CascadePickerType[];
 }
 
-export interface basePicker {
-  label: string;
+export interface BasePicker {
+  label?: string;
   value: string;
+  text?: string;
+}
+
+export interface AreaListType {
+  province_list: StrObj;
+  city_list: StrObj;
+  county_list: StrObj;
+}
+
+export interface SelectPicker {
+  area: string[];
+  rentType: string[];
+  price: string[];
+  more: string[];
+}
+
+export interface OnSelectType {
+  value: string;
+  tabIndex: number;
+  selectedOptions: CascadePickerType[];
+}
+
+export interface TitleStats extends BaseBoolean {
+  area: boolean;
+  rentType: boolean;
+  price: boolean;
+  more: boolean;
 }
