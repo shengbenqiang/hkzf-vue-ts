@@ -9,12 +9,17 @@ export interface FilterSolveType {
   openType: string;
   condition: ConditionType;
   conditionText: string;
+  showMore: boolean;
+  selectPicker: SelectPicker;
   showCondition: boolean;
   conditionData: CascadePickerType | BasePicker[];
   titleSelectedStatus: TitleStats;
   closePicker: () => void;
   handleOpenType: (type: string) => void;
   handleSelectPicker: (val: OnSelectType) => void;
+  handleMoreSelected: (val: string) => void;
+  closeMorePopup: () => void;
+  clearMorePopup: () => void;
 }
 
 export interface ConditionType {
@@ -58,4 +63,11 @@ export interface TitleStats extends BaseBoolean {
   rentType: boolean;
   price: boolean;
   more: boolean;
+}
+
+export interface FilterStr {
+  more: string;
+  rentType: string;
+  price: string;
+  area: string;
 }

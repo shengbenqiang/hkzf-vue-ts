@@ -1,5 +1,5 @@
 import service from "@/api/service";
-import { StrObj } from "@/untils/BaseType";
+import { FilterStr } from "@/untils/ListType";
 
 export default {
   getNeighbourhood(id: string) {
@@ -13,7 +13,7 @@ export default {
         return res.data;
       });
   },
-  getHouseList(cityId: string, filters: StrObj, start: number, end: number) {
+  getHouseList(cityId: string, filters: FilterStr, start: number, end: number) {
     return service
       .get("/houses", {
         params: {

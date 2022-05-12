@@ -8,3 +8,7 @@ import "vant/es/field/style";
 import "vant/es/toast/style";
 import "vant/es/cascader/style";
 import "vant/es/popup/style";
+import "vant/es/sticky/style";
+import "vant/es/button/style";
+import "vant/es/form/style";
+import "vant/es/cell-group/style";

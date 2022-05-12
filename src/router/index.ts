@@ -3,6 +3,7 @@ import MapView from "@/views/MapView.vue";
 import NewsView from "@/views/NewsView.vue";
 import CityList from "@/views/CityList.vue";
 import HomeView from "@/views/HomeView.vue";
+import LoginVIew from "@/views/LoginVIew.vue";
 import SearchView from "@/views/SearchView.vue";
 import ParentView from "@/views/ParentView.vue";
 import ProfileView from "@/views/ProfileView.vue";
@@ -55,6 +56,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/map",
     name: "MapView",
     component: MapView,
+  },
+  {
+    path: "/login",
+    name: "Login",
+    component: LoginVIew,
   },
 ];
 

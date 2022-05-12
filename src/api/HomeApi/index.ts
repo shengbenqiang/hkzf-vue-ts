@@ -17,11 +17,11 @@ export default {
         return res.data;
       });
   },
-  getNews() {
+  getNews(area?: string) {
     return service
       .get("/home/news", {
         params: {
-          area: "AREA%7C88cff55c-aaa4-e2e0",
+          area: area ? area : "AREA%7C88cff55c-aaa4-e2e0",
         },
       })
       .then((res) => {

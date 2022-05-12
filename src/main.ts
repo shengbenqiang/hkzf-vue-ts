@@ -14,6 +14,11 @@ import {
   Toast,
   Cascader,
   Popup,
+  Sticky,
+  List,
+  Button,
+  Form,
+  CellGroup,
 } from "vant";
 import "@/untils/VantStyle";
 
@@ -33,4 +38,9 @@ app
   .use(Cascader)
   .use(Toast)
   .use(Popup)
+  .use(Sticky)
+  .use(List)
+  .use(Button)
+  .use(Form)
+  .use(CellGroup)
   .mount("#app");

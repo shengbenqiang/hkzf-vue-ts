@@ -1,6 +1,8 @@
 import api from "@/api/index";
 import { LocateType, CityAbout, ListItem } from "./CityType";
 
+const TOKEN = "hkzf_token";
+
 export const formatCityData = (list: LocateType[]): CityAbout => {
   const cityList: ListItem = {};
 
@@ -54,3 +56,11 @@ export const formatCityIndex = (letter: string): string => {
       return letter.toLocaleUpperCase();
   }
 };
+
+export const getToken = () => localStorage.getItem(TOKEN);
+
+export const setToken = (token: string) => localStorage.setItem(TOKEN, token);
+
+export const removeToken = () => localStorage.removeItem(TOKEN);
+
+export const isAuth = () => !!getToken();
