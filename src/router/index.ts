@@ -1,9 +1,12 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import { isAuth } from "@/untils/solve";
 import MapView from "@/views/MapView.vue";
 import NewsView from "@/views/NewsView.vue";
 import CityList from "@/views/CityList.vue";
+import RentView from "@/views/RentView.vue";
 import HomeView from "@/views/HomeView.vue";
 import LoginVIew from "@/views/LoginVIew.vue";
+import Collection from "@/views/Collection.vue";
 import SearchView from "@/views/SearchView.vue";
 import ParentView from "@/views/ParentView.vue";
 import ProfileView from "@/views/ProfileView.vue";
@@ -62,11 +65,39 @@ const routes: Array<RouteRecordRaw> = [
     name: "Login",
     component: LoginVIew,
   },
+  {
+    path: "/collection",
+    name: "Collection",
+    meta: {
+      isLogin: true,
+    },
+    component: Collection,
+  },
+  {
+    path: "/rent",
+    name: "RentView",
+    meta: {
+      isLogin: true,
+    },
+    component: RentView,
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta!.isLogin) {
+    if (isAuth()) {
+      next();
+    } else {
+      next("/login");
+    }
+  } else {
+    next();
+  }
 });
 
 export default router;

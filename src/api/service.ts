@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Notify } from "vant";
 import { AxiosConfig } from "@/untils/ServiceType";
+import { getToken } from "@/untils/solve";
 
 const axiosConfig: AxiosConfig = {
   baseURL: "",
@@ -28,6 +29,13 @@ const service = axios.create(axiosConfig);
 
 service.interceptors.request.use(
   (config) => {
+    if (
+      config.url?.startsWith("/user") &&
+      !config.url?.startsWith("/user/login") &&
+      !config.url?.startsWith("/user/registered")
+    ) {
+      config.headers!.Authorization = getToken() as string;
+    }
     return config;
   },
   (error) => Promise.reject(error)

@@ -19,6 +19,7 @@ import {
   Button,
   Form,
   CellGroup,
+  Dialog,
 } from "vant";
 import "@/untils/VantStyle";
 
@@ -37,6 +38,7 @@ app
   .use(Icon)
   .use(Cascader)
   .use(Toast)
+  .use(Dialog)
   .use(Popup)
   .use(Sticky)
   .use(List)

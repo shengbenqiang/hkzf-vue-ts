@@ -12,3 +12,4 @@ import "vant/es/sticky/style";
 import "vant/es/button/style";
 import "vant/es/form/style";
 import "vant/es/cell-group/style";
+import "vant/es/dialog/style";

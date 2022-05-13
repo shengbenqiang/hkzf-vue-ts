@@ -1,6 +1,7 @@
 <template>
   <van-nav-bar
     left-arrow
+    class="common-nav-self"
     :title="title"
     @click-left="onClickLeft"
   ></van-nav-bar>

@@ -4,3 +4,12 @@ export interface UserMenuType {
   iconfont: string;
   to?: string;
 }
+
+export interface LoginData {
+  account: string;
+  password: string;
+}
+
+export interface EmptyType {
+  emptyImg: string;
+}
