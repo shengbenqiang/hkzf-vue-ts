@@ -11,6 +11,7 @@ import SearchView from "@/views/SearchView.vue";
 import ParentView from "@/views/ParentView.vue";
 import ProfileView from "@/views/ProfileView.vue";
 import HouseListView from "@/views/HouseListView.vue";
+import ReleaseHouseView from "@/views/ReleaseHouseView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -80,6 +81,14 @@ const routes: Array<RouteRecordRaw> = [
       isLogin: true,
     },
     component: RentView,
+  },
+  {
+    path: "/releaseHouse",
+    name: "ReleaseHouseView",
+    meta: {
+      isLogin: true,
+    },
+    component: ReleaseHouseView,
   },
 ];
 

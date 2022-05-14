@@ -7,6 +7,7 @@
           class="search-area-title"
           v-for="itemArea in areaList"
           :key="itemArea.community"
+          @click="handleAreaClick(itemArea)"
         >
           {{ itemArea.communityName }}
         </div>
@@ -19,6 +20,7 @@
 import { defineComponent, provide, ref } from "vue";
 import "@/assets/css/SearchView.css";
 import { getCurrentCity } from "@/untils/solve";
+import { useRouter } from "vue-router";
 import { AreaType } from "@/untils/SearchView";
 import api from "@/api";
 import SearchNavBar from "@/components/SearchNavBar/SearchNavBar.vue";
@@ -29,6 +31,7 @@ export default defineComponent({
     SearchNavBar,
   },
   setup() {
+    const router = useRouter();
     const areaList = ref<AreaType[]>([]);
 
     function getAreaName(areaName: string) {
@@ -41,12 +44,18 @@ export default defineComponent({
       });
     }
 
+    function handleAreaClick(areaInfo: AreaType) {
+      console.log(areaInfo);
+      router.back();
+    }
+
     provide("SearchBar", {
       getAreaName,
     });
 
     return {
       areaList,
+      handleAreaClick,
     };
   },
 });

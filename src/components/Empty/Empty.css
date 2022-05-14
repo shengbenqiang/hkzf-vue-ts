@@ -1,4 +1,25 @@
 .empty {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    user-select: none;
+}
+.empty img {
+    width: 13rem;
+    margin-bottom: 1rem;
+    margin-top: 30%;
+}
+.empty p {
+    margin: 0;
+}
+.empty-word {
+    font-size: 1.2rem;
+    color: #666666;
+}
+.empty-word span {
+    display: inline-block;
+    margin-left: 1rem;
+    color: #21b97a;
 }

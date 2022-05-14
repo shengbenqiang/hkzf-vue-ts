@@ -20,8 +20,10 @@ import {
   Form,
   CellGroup,
   Dialog,
+  Picker,
 } from "vant";
 import "@/untils/VantStyle";
+import { createPinia } from "pinia";
 
 const app = createApp(App);
 
@@ -45,4 +47,6 @@ app
   .use(Button)
   .use(Form)
   .use(CellGroup)
+  .use(Picker)
+  .use(createPinia)
   .mount("#app");

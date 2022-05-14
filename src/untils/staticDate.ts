@@ -2,6 +2,7 @@ import { tabBarType } from "./ParentType";
 import { HomeNavigate } from "./HomeType";
 import { TitleListType } from "./ListType";
 import { UserMenuType, EmptyType } from "./ProfileType";
+import { RoomStaticType } from "./RentRelease";
 
 export const tabs: tabBarType[] = [
   {
@@ -45,7 +46,7 @@ export const navigate: HomeNavigate[] = [
   {
     img: require("@/assets/images/nav-4.png"),
     name: "去出租",
-    path: "/rent",
+    path: "/releaseHouse",
   },
 ];
 
@@ -80,3 +81,28 @@ export const menus: UserMenuType[] = [
 export const emptyData: EmptyType = {
   emptyImg: require("@/assets/images/not-found.png"),
 };
+
+export const roomTypeData: RoomStaticType[] = [
+  { text: "一室", value: "ROOM|d4a692e4-a177-37fd" },
+  { text: "二室", value: "ROOM|d1a00384-5801-d5cd" },
+  { text: "三室", value: "ROOM|20903ae0-c7bc-f2e2" },
+  { text: "四室", value: "ROOM|ce2a5daa-811d-2f49" },
+  { text: "四室+", value: "ROOM|2731c38c-5b19-ff7f" },
+];
+
+export const orientedData: RoomStaticType[] = [
+  { text: "东", value: "ORIEN|141b98bf-1ad0-11e3" },
+  { text: "西", value: "ORIEN|103fb3aa-e8b4-de0e" },
+  { text: "南", value: "ORIEN|61e99445-e95e-7f37" },
+  { text: "北", value: "ORIEN|caa6f80b-b764-c2df" },
+  { text: "东南", value: "ORIEN|dfb1b36b-e0d1-0977" },
+  { text: "东北", value: "ORIEN|67ac2205-7e0f-c057" },
+  { text: "西南", value: "ORIEN|2354e89e-3918-9cef" },
+  { text: "西北", value: "ORIEN|80795f1a-e32f-feb9" },
+];
+
+export const floorData: RoomStaticType[] = [
+  { text: "高楼层", value: "FLOOR|1" },
+  { text: "中楼层", value: "FLOOR|2" },
+  { text: "低楼层", value: "FLOOR|3" },
+];

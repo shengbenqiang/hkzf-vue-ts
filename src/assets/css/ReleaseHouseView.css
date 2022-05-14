@@ -1,0 +1,17 @@
+.release-house-nav {
+    width: 100%;
+    height: 4.6rem;
+}
+.release-house-info-room {
+    width: 100%;
+    height: calc(100% - 4.6rem);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.release-house-info-room::-webkit-scrollbar {
+    display: none;
+}
+.release-info-price-extra {
+    color: #646566;
+    font-size: 1.32rem;
+}
