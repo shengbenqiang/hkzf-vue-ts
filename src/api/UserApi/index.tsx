@@ -4,7 +4,7 @@ import { LoginData } from "@/untils/ProfileType";
 export default {
   getUser() {
     return service.get("/user").then((res) => {
-      return res.data;
+      return res;
     });
   },
   userLogin(user: LoginData) {

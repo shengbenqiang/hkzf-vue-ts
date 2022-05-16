@@ -45,8 +45,13 @@ export default defineComponent({
     }
 
     function handleAreaClick(areaInfo: AreaType) {
-      console.log(areaInfo);
-      router.back();
+      router.replace({
+        name: "ReleaseHouseView",
+        params: {
+          name: areaInfo.communityName,
+          id: areaInfo.community,
+        },
+      });
     }
 
     provide("SearchBar", {

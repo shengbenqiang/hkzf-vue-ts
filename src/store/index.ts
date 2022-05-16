@@ -5,11 +5,13 @@ import {
   HouseReleaseInfo,
 } from "@/untils/RentRelease";
 
-export const releaseHouseInfoStore = defineStore("releaseInfoStore", {
+export const releaseMain = defineStore("release", {
   state: (): { houseInfo: HouseReleaseInfo } => ({
     houseInfo: {
       area: "",
       price: "",
+      title: "",
+      desc: "",
       roomType: {} as RoomStaticType,
       oriented: {} as RoomStaticType,
       floor: {} as RoomStaticType,

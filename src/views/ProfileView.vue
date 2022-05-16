@@ -67,16 +67,20 @@ export default defineComponent({
     const nickName = ref<string>("");
     const defaultUserAvatar = "http://localhost:8080/img/profile/avatar.png";
 
-    function getUserInfo() {
+    async function getUserInfo() {
       if (isLogin.value) {
-        api.UserApi.getUser().then((res) => {
-          if (res.status === 200) {
-            avatar.value = res.body.avatar;
-            nickName.value = res.body.nickname;
+        await api.UserApi.getUser().then((res) => {
+          if (res) {
+            avatar.value = res.data.body.avatar;
+            nickName.value = res.data.body.nickname;
           } else {
             isLogin.value = false;
+            removeToken();
           }
         });
+      } else {
+        isLogin.value = false;
+        removeToken();
       }
     }
 

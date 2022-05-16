@@ -18,13 +18,16 @@ import {
   List,
   Button,
   Form,
+  Cell,
   CellGroup,
   Dialog,
   Picker,
+  Uploader,
 } from "vant";
 import "@/untils/VantStyle";
 import { createPinia } from "pinia";
 
+const pinia = createPinia();
 const app = createApp(App);
 
 app
@@ -46,7 +49,9 @@ app
   .use(List)
   .use(Button)
   .use(Form)
+  .use(Cell)
   .use(CellGroup)
   .use(Picker)
-  .use(createPinia)
+  .use(Uploader)
+  .use(pinia)
   .mount("#app");

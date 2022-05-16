@@ -38,4 +38,15 @@ export default {
         return res.data;
       });
   },
+  uploadImg(formData: FormData) {
+    return service
+      .post("/houses/image", formData, {
+        headers: {
+          "Content-type": "multipart/form-data",
+        },
+      })
+      .then((res) => {
+        return res.data;
+      });
+  },
 };

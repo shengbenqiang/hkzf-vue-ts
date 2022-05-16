@@ -14,3 +14,5 @@ import "vant/es/form/style";
 import "vant/es/cell-group/style";
 import "vant/es/dialog/style";
 import "vant/es/picker/style";
+import "vant/es/uploader/style";
+import "vant/es/cell/style";
