@@ -1,5 +1,6 @@
 import service from "@/api/service";
 import { LoginData } from "@/untils/ProfileType";
+import { RentInfo } from "@/untils/RentRelease";
 
 export default {
   getUser() {
@@ -29,6 +30,11 @@ export default {
   },
   getReleaseRent() {
     return service.get("/user/houses").then((res) => {
+      return res.data;
+    });
+  },
+  rentAdd(rentInfo: RentInfo) {
+    return service.post("/user/houses", rentInfo).then((res) => {
       return res.data;
     });
   },

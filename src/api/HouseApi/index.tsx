@@ -49,4 +49,9 @@ export default {
         return res.data;
       });
   },
+  getHouseInfo(houseCode: string) {
+    return service.get(`/houses/${houseCode}`).then((res) => {
+      return res.data;
+    });
+  },
 };

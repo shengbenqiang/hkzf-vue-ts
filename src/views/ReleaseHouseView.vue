@@ -87,7 +87,7 @@
           <van-field name="uploader" label="文件上传">
             <template #input>
               <van-uploader
-                v-model="uploadImgs"
+                v-model="houseInfo.houseImgs"
                 multiple
                 :after-read="handleGetFile"
               />
@@ -96,7 +96,10 @@
           <van-cell title="房屋配置">
             <template #label>
               <div class="release-house-package">
-                <HousePackage />
+                <HousePackage
+                  @handleSelectPackage="handleSelectPackage"
+                  :select-package="houseInfo.selectPackage"
+                />
               </div>
             </template>
           </van-cell>
@@ -129,10 +132,13 @@ import {
   AreaInfoType,
   HouseReleaseInfo,
   RoomStaticType,
+  PackageType,
+  RentInfo,
 } from "@/untils/RentRelease";
 import { floorData, orientedData, roomTypeData } from "@/untils/staticDate";
 import { releaseMain } from "@/store";
 import api from "@/api";
+import { Notify } from "vant";
 
 export default defineComponent({
   name: "ReleaseHouseView",
@@ -144,7 +150,6 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const router = useRouter();
-    const uploadImgs = ref([]);
     const releaseStore = releaseMain();
     const houseInfo = reactive<HouseReleaseInfo>({
       area: "",
@@ -155,13 +160,86 @@ export default defineComponent({
       oriented: {} as RoomStaticType,
       floor: {} as RoomStaticType,
       areaInfo: {} as AreaInfoType,
+      selectPackage: [],
+      houseImgs: [],
     });
     const showReleasePicker = ref<boolean>(false);
     const columnData = ref<RoomStaticType[]>([]);
     const pickerType = ref<string>("");
 
-    function onSubmit() {
-      console.log("执行了");
+    async function onSubmit() {
+      if (Object.keys(houseInfo.roomType).length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请选择房屋户型",
+          duration: 1000,
+        });
+      }
+      if (Object.keys(houseInfo.oriented).length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请选择房屋朝向",
+          duration: 1000,
+        });
+      }
+      if (Object.keys(houseInfo.floor).length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请选择房屋楼层",
+          duration: 1000,
+        });
+      }
+      if (Object.keys(houseInfo.areaInfo).length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请选择小区信息",
+          duration: 1000,
+        });
+      }
+      if (houseInfo.houseImgs.length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请上传房屋图片",
+          duration: 1000,
+        });
+      }
+      if (houseInfo.selectPackage.length === 0) {
+        return Notify({
+          type: "warning",
+          message: "请选择房屋配置",
+          duration: 1000,
+        });
+      }
+      const rent: RentInfo = {
+        description: houseInfo.desc,
+        community: houseInfo.areaInfo.id,
+        floor: houseInfo.floor.value,
+        oriented: houseInfo.oriented.value,
+        price: houseInfo.price,
+        roomType: houseInfo.roomType.value,
+        size: houseInfo.area,
+        supporting: houseInfo.selectPackage.map((item) => item.name).join("|"),
+        title: houseInfo.title,
+        houseImg: houseInfo.houseImgs
+          .map((item) => item.content?.slice(21, item.content?.length))
+          .join("|"),
+      };
+      await api.UserApi.rentAdd(rent).then((res) => {
+        if (res.status === 200) {
+          Notify({ type: "success", message: "发布成功", duration: 1000 });
+          router.push({
+            path: "/rent",
+            replace: true,
+          });
+          releaseStore.$reset();
+        } else {
+          Notify({
+            type: "danger",
+            message: "服务器偷懒了，请稍后再试~",
+            duration: 1000,
+          });
+        }
+      });
     }
 
     function getHouseInfo() {
@@ -246,6 +324,23 @@ export default defineComponent({
       });
     }
 
+    function handleSelectPackage(packageInfo: PackageType) {
+      const searchPackage = houseInfo.selectPackage.filter(
+        (itemPackage) => itemPackage.id === packageInfo.id
+      );
+      if (searchPackage.length > 0) {
+        const deleteIndex = houseInfo.selectPackage.findIndex(
+          (itemPackage) => itemPackage.id === packageInfo.id
+        );
+        houseInfo.selectPackage.splice(deleteIndex, 1);
+      } else {
+        houseInfo.selectPackage.push(packageInfo);
+      }
+      releaseStore.$patch({
+        houseInfo: houseInfo,
+      });
+    }
+
     watch(
       () => route.path,
       (val) => {
@@ -261,7 +356,6 @@ export default defineComponent({
       onSubmit,
       houseInfo,
       columnData,
-      uploadImgs,
       CancelPicker,
       handleGetFile,
       handleDescUpdate,
@@ -272,6 +366,7 @@ export default defineComponent({
       handleAreaUpdate,
       handlePriceUpdate,
       handleTitleUpdate,
+      handleSelectPackage,
     };
   },
 });

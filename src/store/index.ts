@@ -16,6 +16,8 @@ export const releaseMain = defineStore("release", {
       oriented: {} as RoomStaticType,
       floor: {} as RoomStaticType,
       areaInfo: {} as AreaInfoType,
+      selectPackage: [],
+      houseImgs: [],
     },
   }),
 });

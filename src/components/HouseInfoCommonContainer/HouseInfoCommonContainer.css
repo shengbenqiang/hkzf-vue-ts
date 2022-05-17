@@ -1,0 +1,13 @@
+.house-info-common-con {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+}
+.house-info-common-main {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 0;
+}
+.house-info-common-show-border {
+    border-bottom: 1px solid #dbdbdb;
+}

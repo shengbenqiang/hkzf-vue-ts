@@ -1,5 +1,5 @@
 <template>
-  <div class="house">
+  <div class="house" @click="handleHouseInfo">
     <div class="house-room">
       <div class="house-room-left">
         <img
@@ -25,6 +25,7 @@
 import { defineComponent, PropType } from "vue";
 import "./House.css";
 import { RoomType } from "@/untils/HomeType";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "HouseCom",
@@ -33,6 +34,21 @@ export default defineComponent({
       type: Object as PropType<RoomType>,
       require: true,
     },
+  },
+  setup(props) {
+    const router = useRouter();
+    function handleHouseInfo() {
+      router.push({
+        name: "RentInfoView",
+        params: {
+          houseCode: props.houseInfo?.houseCode,
+        },
+      });
+    }
+
+    return {
+      handleHouseInfo,
+    };
   },
 });
 </script>

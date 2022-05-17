@@ -23,6 +23,7 @@ import {
   Dialog,
   Picker,
   Uploader,
+  Notify,
 } from "vant";
 import "@/untils/VantStyle";
 import { createPinia } from "pinia";
@@ -54,4 +55,5 @@ app
   .use(Picker)
   .use(Uploader)
   .use(pinia)
+  .use(Notify)
   .mount("#app");

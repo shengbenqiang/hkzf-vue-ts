@@ -10,6 +10,7 @@ import Collection from "@/views/Collection.vue";
 import SearchView from "@/views/SearchView.vue";
 import ParentView from "@/views/ParentView.vue";
 import ProfileView from "@/views/ProfileView.vue";
+import RentInfoView from "@/views/RentInfoView.vue";
 import HouseListView from "@/views/HouseListView.vue";
 import ReleaseHouseView from "@/views/ReleaseHouseView.vue";
 
@@ -89,6 +90,11 @@ const routes: Array<RouteRecordRaw> = [
       isLogin: true,
     },
     component: ReleaseHouseView,
+  },
+  {
+    path: "/rentInfo",
+    name: "RentInfoView",
+    component: RentInfoView,
   },
 ];
 

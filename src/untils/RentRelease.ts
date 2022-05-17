@@ -1,4 +1,5 @@
 import { StringAny } from "./BaseType";
+import type { UploaderFileListItem } from "vant";
 
 export interface HouseReleaseInfo extends StringAny {
   area: string;
@@ -9,6 +10,8 @@ export interface HouseReleaseInfo extends StringAny {
   oriented: RoomStaticType;
   floor: RoomStaticType;
   areaInfo: AreaInfoType;
+  selectPackage: PackageType[];
+  houseImgs: UploaderFileListItem[];
 }
 
 export interface RoomStaticType {
@@ -32,4 +35,17 @@ export interface PackageType {
   id: number;
   name: string;
   icon: string;
+}
+
+export interface RentInfo {
+  title: string;
+  description: string;
+  houseImg: string;
+  oriented: string;
+  supporting: string;
+  price: string;
+  roomType: string;
+  size: string;
+  floor: string;
+  community: string;
 }
