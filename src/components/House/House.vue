@@ -26,6 +26,7 @@ import { defineComponent, PropType } from "vue";
 import "./House.css";
 import { RoomType } from "@/untils/HomeType";
 import { useRouter } from "vue-router";
+import { visitHouse } from "@/store";
 
 export default defineComponent({
   name: "HouseCom",
@@ -37,12 +38,17 @@ export default defineComponent({
   },
   setup(props) {
     const router = useRouter();
+    const houseCollect = visitHouse();
+
     function handleHouseInfo() {
       router.push({
         name: "RentInfoView",
         params: {
           houseCode: props.houseInfo?.houseCode,
         },
+      });
+      houseCollect.$patch({
+        houseCode: props.houseInfo?.houseCode,
       });
     }
 

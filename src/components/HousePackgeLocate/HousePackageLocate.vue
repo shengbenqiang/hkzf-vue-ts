@@ -1,6 +1,13 @@
 <template>
   <div class="house-package-locate">
-    <div class="house-package-locate-title">{{ title }}</div>
+    <div
+      :class="[
+        'house-package-locate-title',
+        border ? 'house-package-locate-border' : '',
+      ]"
+    >
+      {{ title }}
+    </div>
     <div class="house-package-locate-main">
       <slot />
     </div>
@@ -17,6 +24,10 @@ export default defineComponent({
     title: {
       type: String,
       require: true,
+    },
+    border: {
+      type: Boolean,
+      default: false,
     },
   },
 });

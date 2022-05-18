@@ -38,4 +38,19 @@ export default {
       return res.data;
     });
   },
+  getFavoritesInfo(id: string) {
+    return service.get(`/user/favorites/${id}`).then((res) => {
+      return res.data;
+    });
+  },
+  cancelFavorites(id: string) {
+    return service.delete(`/user/favorites/${id}`).then((res) => {
+      return res.data;
+    });
+  },
+  addFavorites(id: string) {
+    return service.post(`/user/favorites/${id}`).then((res) => {
+      return res.data;
+    });
+  },
 };

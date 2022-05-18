@@ -21,3 +21,9 @@ export const releaseMain = defineStore("release", {
     },
   }),
 });
+
+export const visitHouse = defineStore("houseInfo", {
+  state: (): { houseCode: string } => ({
+    houseCode: "",
+  }),
+});

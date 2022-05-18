@@ -3,7 +3,7 @@
     <van-grid :column-num="5" class="house-package-self-grid" :border="false">
       <van-grid-item
         class="house-package-self-grid-item-cell"
-        v-for="itemPackage in packageData"
+        v-for="itemPackage in selfPackage"
         :key="itemPackage.id"
       >
         <template #default>
@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue";
+import { defineComponent, PropType, ref, watch } from "vue";
 import "./HousePackage.css";
 import { packageData } from "@/untils/staticDate";
 import SIcon from "@/components/SIcon/SIcon.vue";
@@ -44,15 +44,41 @@ export default defineComponent({
       type: Array as PropType<PackageType[]>,
       default: () => [],
     },
+    defaultPackage: {
+      type: Array as PropType<string[]>,
+      default: () => [],
+    },
   },
   emits: ["handleSelectPackage"],
   setup(props, { emit }) {
+    const selfPackage = ref<PackageType[]>(packageData);
     function handlePackageClick(packageInfo: PackageType) {
       emit("handleSelectPackage", packageInfo);
     }
 
+    function showPackage() {
+      const getShowPackage: PackageType[] = [];
+      if (props.defaultPackage?.length > 0) {
+        props.defaultPackage?.forEach((itemDefault) => {
+          getShowPackage.push(
+            selfPackage.value.find(
+              (itemPackage) => itemPackage.name === itemDefault
+            ) as PackageType
+          );
+        });
+        selfPackage.value = getShowPackage;
+      }
+    }
+
+    watch(
+      () => props.defaultPackage,
+      () => {
+        showPackage();
+      }
+    );
+
     return {
-      packageData,
+      selfPackage,
       handlePackageClick,
     };
   },
